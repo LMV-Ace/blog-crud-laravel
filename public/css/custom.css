@@ -1,0 +1,46 @@
+#index{
+
+    
+}
+.card{
+
+    padding: 40px;  
+    top: 100px;
+    text-align: center;
+    margin-left: 350px;
+    width: 400px;
+}
+.form-control{
+
+    margin-bottom: 10px;
+}
+.jumbotron{
+
+    margin-top: 150px;
+    text-align: center;
+    background-color: rgba(0,0,0,.5);
+    opacity: 3em;
+}
+.col-lg-12{
+
+    text-align: center;
+}
+.col-lg-6{
+
+    text-align: center;
+    margin-top: 10px;
+
+}
+button{
+
+    width: 100px;
+}
+table{
+
+    margin-top: 50px;
+    width: 50%;
+    text-align: center;
+}
+th{
+    width: 33.3%;
+}
