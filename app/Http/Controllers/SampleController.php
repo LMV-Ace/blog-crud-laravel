@@ -15,7 +15,7 @@ class SampleController extends Controller
      */
     public function index()
     {
-        $post = Post::all();
+        $post = Post::orderBy('created_at','desc')->paginate(4);
         return view('sample.index')->with('post', $post);
     }
 
@@ -26,7 +26,7 @@ class SampleController extends Controller
      */
     public function create()
     {
-        //
+        return view('sample.create');
     }
 
     /**
@@ -37,7 +37,21 @@ class SampleController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request, [
+
+            'title' => 'required',
+            'body' => 'required'
+
+        ]);
+
+        $post = new Post;
+
+        $post->title = $request->input('title');
+        $post->body = $request->input('body');
+        $post->user_id = auth()->user()->id;
+        $post->save();
+
+        return redirect('/sample')->with('success', 'Post Created!');
     }
 
     /**
@@ -62,7 +76,9 @@ class SampleController extends Controller
      */
     public function edit($id)
     {
-        //
+        $post = Post::find($id);
+
+        return view('sample.edit')->with('post', $post);
     }
 
     /**
@@ -74,7 +90,21 @@ class SampleController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $this->validate($request, [
+
+            'title' => 'required',
+            'body' => 'required'
+
+        ]);
+
+        $post = new Post;
+
+        $post->title = $request->input('title');
+        $post->body = $request->input('body');
+        $post->user_id = auth()->user()->id;
+        $post->save();
+
+        return redirect('/sample')->with('success', 'Post Updated!');
     }
 
     /**
@@ -85,6 +115,9 @@ class SampleController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $post = Post::find($id);
+        $post->delete();
+
+        return redirect('/sample')->with('success', 'Post Removed!');
     }
 }

@@ -11,11 +11,10 @@
 |
 */
 
-// Route::get('/', function () {
-//     return view('welcome');
-// });
 
-// Route::resource('/', 'SampleController');
+Auth::routes();
+
+Route::get('/dashboard', 'DashboardController@index');
 
 Route::get('/', 'PagesController@index')->name('index');
 
@@ -23,5 +22,6 @@ Route::get('/services', 'PagesController@services')->name('services');
 
 Route::get('/about', 'PagesController@about')->name('about');
 
-Route::resource('sample', 'SampleController');  
+Route::resource('sample', 'SampleController'); 
+
 
